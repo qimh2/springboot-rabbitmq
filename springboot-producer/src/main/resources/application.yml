@@ -4,7 +4,9 @@ spring:
     username: guest
     password: guest
     virtual-host: /
+    #设置此属性配置可以确保消息成功发送到交换器
     publisher-confirms: true
+    #可以确保消息在未被队列接收时返回
     publisher-returns: true
     template:
       mandatory: true

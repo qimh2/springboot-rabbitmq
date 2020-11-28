@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Random;
 import java.util.UUID;
 
 @RunWith(SpringRunner.class)
@@ -17,7 +18,7 @@ public class SpringbootProducerApplicationTests {
     @Test
     public void testSend() throws Exception {
         Order order = new Order();
-        order.setId(2018092102);
+        order.setId(2018092102+ new Random().nextInt());
         order.setName("测试订单1");
         order.setMessageId(System.currentTimeMillis()+"$"+UUID.randomUUID().toString());
         orderService.createOrder(order);
