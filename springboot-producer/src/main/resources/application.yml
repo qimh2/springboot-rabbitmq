@@ -1,15 +1,15 @@
 spring:
-  rabbitmq:
-    addresses: 127.0.0.1:5672
-    username: guest
-    password: guest
-    virtual-host: /
-    #设置此属性配置可以确保消息成功发送到交换器
-    publisher-confirms: true
-    #可以确保消息在未被队列接收时返回
-    publisher-returns: true
-    template:
-      mandatory: true
+#  rabbitmq:
+#    addresses: 127.0.0.1:5672
+#    username: guest
+#    password: guest
+#    virtual-host: /
+#    #设置此属性配置可以确保消息成功发送到交换器
+#    publisher-confirms: true
+#    #可以确保消息在未被队列接收时返回
+#    publisher-returns: true
+#    template:
+#      mandatory: true
   datasource:
     url: jdbc:mysql://localhost:3306/rabbitmq?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
     username: root
@@ -27,3 +27,32 @@ logging:
   level:
     tk:
       mybatis: trace
+
+v2:
+  spring:
+    rabbitmq:
+      host: 127.0.0.1
+      port: 5672
+      username: guest
+      password: guest
+      virtual-host: /
+      #设置此属性配置可以确保消息成功发送到交换器
+      publisher-confirms: true
+      #可以确保消息在未被队列接收时返回
+      publisher-returns: true
+      template:
+        mandatory: true
+v1:
+  spring:
+    rabbitmq:
+      host: 127.0.0.1
+      port: 5672
+      username: guest
+      password: guest
+      virtual-host: /
+      #设置此属性配置可以确保消息成功发送到交换器
+      publisher-confirms: true
+      #可以确保消息在未被队列接收时返回
+      publisher-returns: true
+      template:
+        mandatory: true
