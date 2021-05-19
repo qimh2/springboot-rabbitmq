@@ -141,8 +141,17 @@ CREATE TABLE `t_order` (
 ```
 
 > 代码实例及学习参考内容来自慕课网课程[RabbitMQ消息中间件极速入门与实战](https://www.imooc.com/learn/1042)
+## 3、多数据源接入
+参考链接：
+https://www.cnblogs.com/chinaxieshuai/articles/12160688.html
 
-## 3、学习记录
+辅助知识：
+1.ready,unacked,total属性 解释：https://blog.csdn.net/li1987by/article/details/90314101
+
+2.消息ack 解释：https://www.cnblogs.com/wangjing666/p/10038444.html
+
+3.@payload 解释：https://www.jianshu.com/p/382d6f609697
+## 4、学习记录
 1. [RabbitMQ安装与配置](https://github.com/suxiongwei/suxiongwei.github.io/blob/master/article/other/rabbitmq_install.md)
 2. [RabbitMQ：消息发送确认与消息接收确认（ACK）](https://www.jianshu.com/p/2c5eebfd0e95)
 3. [消息中间件选型分析——从Kafka与RabbitMQ的对比来看全局](http://blog.didispace.com/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%E9%80%89%E5%9E%8B%E5%88%86%E6%9E%90/)
