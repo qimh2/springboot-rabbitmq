@@ -1,4 +1,4 @@
-package com.sxw.springbootproducer.config.rabbitmq;
+package com.sxw.springbootconsumer.config.rabbitmq;
 
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;

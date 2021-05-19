@@ -36,6 +36,13 @@ v2:
       username: guest
       password: guest
       virtual-host: /
+      listener:
+        simple:
+          concurrency: 5
+          ## manual:手动 ack（确认）
+          acknowledge-mode: manual
+          max-concurrency: 10
+          prefetch: 1
       #设置此属性配置可以确保消息成功发送到交换器
       publisher-confirms: true
       #可以确保消息在未被队列接收时返回
@@ -50,6 +57,13 @@ v1:
       username: guest
       password: guest
       virtual-host: /
+      listener:
+        simple:
+          concurrency: 5
+          ## manual:手动 ack（确认）
+          acknowledge-mode: manual
+          max-concurrency: 10
+          prefetch: 1
       #设置此属性配置可以确保消息成功发送到交换器
       publisher-confirms: true
       #可以确保消息在未被队列接收时返回

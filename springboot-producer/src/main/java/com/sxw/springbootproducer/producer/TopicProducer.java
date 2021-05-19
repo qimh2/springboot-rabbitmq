@@ -23,8 +23,8 @@ public class TopicProducer {
 
         String content2 = "This is a topic type of the RabbitMQ message example from v2RabbitTemplate";
         v2RabbitTemplate.convertAndSend(
-                "exchange.topic.example.new",
-                "routing.key.example.new",
+                "exchange.topic.example.new2",
+                "routing.key.example.new2",
                 content2);
     }
 }

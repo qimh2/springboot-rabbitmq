@@ -7,11 +7,13 @@ import org.springframework.amqp.rabbit.core.RabbitAdmin;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * 创建Queue、Exchange并建立绑定关系
  * Created by shuai on 2019/5/16.
  */
+@Configuration
 public class MyRabbitMQCreateConfig {
     @Resource(name = "v2RabbitAdmin")
     private RabbitAdmin v2RabbitAdmin;
@@ -21,13 +23,23 @@ public class MyRabbitMQCreateConfig {
 
     @PostConstruct
     public void RabbitInit() {
-        v2RabbitAdmin.declareExchange(new TopicExchange("exchange.topic.example.new", true, false));
-        v2RabbitAdmin.declareQueue(new Queue("queue.example.topic.new", true));
+        //从数据源
+        v2RabbitAdmin.declareExchange(new TopicExchange("exchange.topic.example.new2", true, false));
+        v2RabbitAdmin.declareQueue(new Queue("queue.example.topic.new2", true));
         v2RabbitAdmin.declareBinding(
                 BindingBuilder
-                        .bind(new Queue("queue.example.topic.new", true))        //直接创建队列
-                        .to(new TopicExchange("exchange.topic.example.new", true, false))    //直接创建交换机 建立关联关系
-                        .with("routing.key.example.new"));    //指定路由Key
+                        .bind(new Queue("queue.example.topic.new2", true))        //直接创建队列
+                        .to(new TopicExchange("exchange.topic.example.new2", true, false))    //直接创建交换机 建立关联关系
+                        .with("routing.key.example.new2"));    //指定路由Key
+
+        //主数据源
+        v1RabbitAdmin.declareExchange(new TopicExchange("exchange.topic.example.new", true, false));
+        v1RabbitAdmin.declareQueue(new Queue("queue.example.topic.new", true));
+        v1RabbitAdmin.declareBinding(
+            BindingBuilder
+                .bind(new Queue("queue.example.topic.new", true))        //直接创建队列
+                .to(new TopicExchange("exchange.topic.example.new", true, false))    //直接创建交换机 建立关联关系
+                .with("routing.key.example.new"));    //指定路由Key
     }
 
 }

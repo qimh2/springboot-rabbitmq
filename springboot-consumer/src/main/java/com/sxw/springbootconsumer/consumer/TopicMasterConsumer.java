@@ -12,8 +12,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = "queue.example.topic.new2", containerFactory = "v2ContainerFactory")
-public class TopicConsumer {
+@RabbitListener(queues = "queue.example.topic.new", containerFactory = "v1ContainerFactory")
+public class TopicMasterConsumer {
 
     @RabbitHandler
     public void consumer( @Payload String message, @Headers Map<String,Object> headers, Channel channel)
@@ -33,6 +33,6 @@ public class TopicConsumer {
 
         //ACK,确认一条消息已经被消费
         channel.basicAck(deliveryTag,multiple);
-        System.out.println("consumer slave:"+message);
+        System.out.println("master consumer:"+message);
     }
 }

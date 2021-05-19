@@ -31,7 +31,6 @@ v2:
       username: guest
       password: guest
       virtual-host: /
-      ## 消费端配置
       listener:
         simple:
           concurrency: 5
@@ -39,6 +38,12 @@ v2:
           acknowledge-mode: manual
           max-concurrency: 10
           prefetch: 1
+      #设置此属性配置可以确保消息成功发送到交换器
+      publisher-confirms: true
+      #可以确保消息在未被队列接收时返回
+      publisher-returns: true
+      template:
+        mandatory: true
 v1:
   spring:
     rabbitmq:
@@ -47,7 +52,6 @@ v1:
       username: guest
       password: guest
       virtual-host: /
-      ## 消费端配置
       listener:
         simple:
           concurrency: 5
@@ -55,3 +59,9 @@ v1:
           acknowledge-mode: manual
           max-concurrency: 10
           prefetch: 1
+      #设置此属性配置可以确保消息成功发送到交换器
+      publisher-confirms: true
+      #可以确保消息在未被队列接收时返回
+      publisher-returns: true
+      template:
+        mandatory: true
