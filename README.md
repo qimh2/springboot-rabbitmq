@@ -145,12 +145,15 @@ CREATE TABLE `t_order` (
 参考链接：
 https://www.cnblogs.com/chinaxieshuai/articles/12160688.html
 
+
 辅助知识：
-1.ready,unacked,total属性 解释：https://blog.csdn.net/li1987by/article/details/90314101
+1. ready,unacked,total属性 解释：https://blog.csdn.net/li1987by/article/details/90314101
 
-2.消息ack 解释：https://www.cnblogs.com/wangjing666/p/10038444.html
+2. 消息ack 解释：https://www.cnblogs.com/wangjing666/p/10038444.html
 
-3.@payload 解释：https://www.jianshu.com/p/382d6f609697
+3. @payload 解释：https://www.jianshu.com/p/382d6f609697
+
+4. RabbitMQ配置属性表：https://blog.csdn.net/en_joker/article/details/80103519
 ## 4、学习记录
 1. [RabbitMQ安装与配置](https://github.com/suxiongwei/suxiongwei.github.io/blob/master/article/other/rabbitmq_install.md)
 2. [RabbitMQ：消息发送确认与消息接收确认（ACK）](https://www.jianshu.com/p/2c5eebfd0e95)
