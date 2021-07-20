@@ -24,26 +24,26 @@ public class MultipleRabbitMQConfig {
             @Value("${v2.spring.rabbitmq.port}") int port,
             @Value("${v2.spring.rabbitmq.username}") String username,
             @Value("${v2.spring.rabbitmq.password}") String password,
-            @Value("${v2.spring.rabbitmq.virtual-host}") String virtualHost,
+            @Value("${v2.spring.rabbitmq.virtual-host}") String virtualHost/*,
             @Value("${v2.spring.rabbitmq.publisher-confirms}") Boolean publisherConfirms,
-            @Value("${v2.spring.rabbitmq.publisher-returns}") Boolean publisherReturns) {
+            @Value("${v2.spring.rabbitmq.publisher-returns}") Boolean publisherReturns*/) {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
         connectionFactory.setHost(host);
         connectionFactory.setPort(port);
         connectionFactory.setUsername(username);
         connectionFactory.setPassword(password);
         connectionFactory.setVirtualHost(virtualHost);
-        connectionFactory.setPublisherConfirms(publisherConfirms);
-        connectionFactory.setPublisherReturns(publisherReturns);
+//        connectionFactory.setPublisherConfirms(publisherConfirms);
+//        connectionFactory.setPublisherReturns(publisherReturns);
         return connectionFactory;
     }
 
     @Bean(name = "v2RabbitTemplate")
     public RabbitTemplate firstRabbitTemplate(
-            @Qualifier("v2ConnectionFactory") ConnectionFactory connectionFactory,
-            @Value("${v2.spring.rabbitmq.template.mandatory}") Boolean mandatory) {
+            @Qualifier("v2ConnectionFactory") ConnectionFactory connectionFactory/*,
+            @Value("${v2.spring.rabbitmq.template.mandatory}") Boolean mandatory*/) {
         RabbitTemplate v2RabbitTemplate = new RabbitTemplate(connectionFactory);
-        v2RabbitTemplate.setMandatory(mandatory);
+//        v2RabbitTemplate.setMandatory(mandatory);
         v2RabbitTemplate.setConfirmCallback((correlationData, ack, s) -> {
             if (!ack) {
 //                    LOGGER.info("{} 发送RabbitMQ消息 ack确认 失败: [{}]", this.name, JSON.toJSONString(object));
@@ -59,14 +59,14 @@ public class MultipleRabbitMQConfig {
 
     @Bean(name = "v2ContainerFactory")
     public SimpleRabbitListenerContainerFactory hospSyncFactory(
-            @Qualifier("v2ConnectionFactory") ConnectionFactory connectionFactory,
+            @Qualifier("v2ConnectionFactory") ConnectionFactory connectionFactory/*,
             @Value("${v2.spring.rabbitmq.listener.simple.acknowledge-mode}") String acknowledge,
-            @Value("${v2.spring.rabbitmq.listener.simple.prefetch}") Integer prefetch
+            @Value("${v2.spring.rabbitmq.listener.simple.prefetch}") Integer prefetch*/
     ) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
-        factory.setAcknowledgeMode(AcknowledgeMode.valueOf(acknowledge.toUpperCase()));
-        factory.setPrefetchCount(prefetch);
+//        factory.setAcknowledgeMode(AcknowledgeMode.valueOf(acknowledge.toUpperCase()));
+//        factory.setPrefetchCount(prefetch);
         return factory;
     }
 
@@ -87,27 +87,27 @@ public class MultipleRabbitMQConfig {
             @Value("${v1.spring.rabbitmq.port}") int port,
             @Value("${v1.spring.rabbitmq.username}") String username,
             @Value("${v1.spring.rabbitmq.password}") String password,
-            @Value("${v1.spring.rabbitmq.virtual-host}") String virtualHost,
+            @Value("${v1.spring.rabbitmq.virtual-host}") String virtualHost/*,
             @Value("${v1.spring.rabbitmq.publisher-confirms}") Boolean publisherConfirms,
-            @Value("${v1.spring.rabbitmq.publisher-returns}") Boolean publisherReturns) {
+            @Value("${v1.spring.rabbitmq.publisher-returns}") Boolean publisherReturns*/) {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
         connectionFactory.setHost(host);
         connectionFactory.setPort(port);
         connectionFactory.setUsername(username);
         connectionFactory.setPassword(password);
         connectionFactory.setVirtualHost(virtualHost);
-        connectionFactory.setPublisherConfirms(publisherConfirms);
-        connectionFactory.setPublisherReturns(publisherReturns);
+//        connectionFactory.setPublisherConfirms(publisherConfirms);
+//        connectionFactory.setPublisherReturns(publisherReturns);
         return connectionFactory;
     }
 
     @Bean(name = "v1RabbitTemplate")
     @Primary
     public RabbitTemplate publicRabbitTemplate(
-            @Qualifier("v1ConnectionFactory") ConnectionFactory connectionFactory,
-            @Value("${v1.spring.rabbitmq.template.mandatory}") Boolean mandatory) {
+            @Qualifier("v1ConnectionFactory") ConnectionFactory connectionFactory/*,
+            @Value("${v1.spring.rabbitmq.template.mandatory}") Boolean mandatory*/) {
         RabbitTemplate v1RabbitTemplate = new RabbitTemplate(connectionFactory);
-        v1RabbitTemplate.setMandatory(mandatory);
+//        v1RabbitTemplate.setMandatory(mandatory);
         v1RabbitTemplate.setConfirmCallback((correlationData, ack, s) -> {
             if (!ack) {
 //                    LOGGER.info("{} 发送RabbitMQ消息 ack确认 失败: [{}]", this.name, JSON.toJSONString(object));
@@ -124,13 +124,13 @@ public class MultipleRabbitMQConfig {
     @Bean(name = "v1ContainerFactory")
     @Primary
     public SimpleRabbitListenerContainerFactory insMessageListenerContainer(
-            @Qualifier("v1ConnectionFactory") ConnectionFactory connectionFactory,
+            @Qualifier("v1ConnectionFactory") ConnectionFactory connectionFactory/*,
             @Value("${v1.spring.rabbitmq.listener.simple.acknowledge-mode}") String acknowledge,
-            @Value("${v1.spring.rabbitmq.listener.simple.prefetch}") Integer prefetch) {
+            @Value("${v1.spring.rabbitmq.listener.simple.prefetch}") Integer prefetch*/) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
-        factory.setAcknowledgeMode(AcknowledgeMode.valueOf(acknowledge.toUpperCase()));
-        factory.setPrefetchCount(prefetch);
+//        factory.setAcknowledgeMode(AcknowledgeMode.valueOf(acknowledge.toUpperCase()));
+//        factory.setPrefetchCount(prefetch);
         return factory;
     }
 
